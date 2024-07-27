@@ -13,6 +13,9 @@ txt_file="$dir/$base_name.txt"
 
 pandoc -f html -t plain -s "$html_file" -o "$txt_file"
 python3 extract_image.py --data_path $html_file 
+# extract useful content from text 
+# export DASHSCOPE_API_KEY="sk="
+python3 extract_txt.py --data_path $html_file 
 
 if [[ $? -eq 0 ]]; then
   echo "Successfully converted $html_file to $txt_file"
